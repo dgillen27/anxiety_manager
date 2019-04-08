@@ -10,8 +10,18 @@ const getUserExperiences = async (user_id) => {
   return resp.data;
 }
 
-const createExperience = async (expData) => {
-  const resp = await api.post('experiences', { experience: expData })
+const createExperience = async (user_id, experienceFormData) => {
+  const { exp_type, description, init_rating, second_rating, final_rating } = experienceFormData
+  const resp = await api.post(`users/${user_id}/experiences`, {
+    experience: {
+      exp_type,
+      description,
+      init_rating,
+      second_rating,
+      final_rating,
+      user_id
+    }
+  })
   return resp.data;
 }
 

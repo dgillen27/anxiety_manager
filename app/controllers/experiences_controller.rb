@@ -21,7 +21,7 @@ class ExperiencesController < ApplicationController
     @experience = Experience.new(experience_params)
 
     if @experience.save
-      render json: @experience, status: :created, location: @experience
+      render json: @experience, status: :created
     else
       render json: @experience.errors, status: :unprocessable_entity
     end
@@ -50,7 +50,7 @@ class ExperiencesController < ApplicationController
   end
 
   def experience_params
-    params.require(:experience).permit(:exp_type, :init_rating, :second_rating, :final_rating, :description)
+    params.require(:experience).permit(:exp_type, :init_rating, :second_rating, :final_rating, :description, :user_id)
   end
 
 end

@@ -115,13 +115,12 @@ class App extends Component {
         [name]: value
       }
     }))
-    console.log(this.state.experienceFormData);
   }
 
   async postExperience(e) {
     e.preventDefault();
     const { experienceFormData } = this.state
-    const experience = await createExperience(experienceFormData);
+    const experience = await createExperience(this.state.currentUser.sub, experienceFormData);
     this.setState({
       currentExperience: experience
     })
@@ -150,7 +149,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getUsers();
-    localStorage.getItem('authToken') && await this.setCurrentUser();
+    !this.state.currentUser && await this.setCurrentUser();
     this.state.currentUser && await this.getExperiences(this.state.currentUser.sub);
   }
 
@@ -184,11 +183,11 @@ class App extends Component {
           />
         )} />
 
-        <Route exact path="/user-profile" render={(props) => (
+        { currentUser && <Route exact path="/user-profile" render={(props) => (
           <UserProfile
           currentUser={currentUser}
           experiences={this.state.experiences}/>
-        )} />
+        )} />}
 
         <Route exact path="/create-experience" render={(props) => (
           <CreateExperience
