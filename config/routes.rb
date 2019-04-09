@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :experiences
   end
+  get "/experiences", to: "experiences#all"
 end

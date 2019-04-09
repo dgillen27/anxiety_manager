@@ -36,3 +36,7 @@ Anxiety Manager is a web app intended to aid users in introspecting about their 
 
 - Creating a collection of all of the data that can be graphed out
 - Graphing out the data
+
+## Technologies Used
+
+- React, Rails, Material UI-slider, Chartkick

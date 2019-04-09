@@ -1,10 +1,15 @@
 class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:show, :update, :destroy]
 
-  # GET /experiences
+  # GET /user/:user_id/experiences
   def index
     @user = User.find(params[:user_id])
     @experiences = Experience.where(user_id: @user.id)
+    render json: @experiences
+  end
+
+  def all
+    @experiences = Experience.all
     render json: @experiences
   end
 
@@ -31,7 +36,7 @@ class ExperiencesController < ApplicationController
   def update
     @user = User.find(params[:user_id])
     @experience = Experience.find(params[:id])
-    if @experience.update(experience_params)
+    if @experience.update(update_params)
       render json: @experience
     else
       render json: @experience.errors, status: :unprocessable_entity
@@ -40,6 +45,8 @@ class ExperiencesController < ApplicationController
 
   # DELETE /users/:user_id/experiences/:id
   def destroy
+    @user = User.find(params[:user_id])
+    @experience = Experience.find(params[:id])
     @experience.destroy
   end
 
@@ -51,6 +58,10 @@ class ExperiencesController < ApplicationController
 
   def experience_params
     params.require(:experience).permit(:exp_type, :init_rating, :second_rating, :final_rating, :description, :user_id)
+  end
+
+  def update_params
+    params.require(:experience).permit(:final_rating)
   end
 
 end

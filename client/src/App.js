@@ -1,11 +1,19 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import { Redirect } from 'react-router-dom';
+import { Link, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import { updateToken } from './services/api';
 import { registerUser, loginUser, getAllUsers } from './services/usersApi';
-import { getAllExperiences, createExperience, getUserExperiences } from './services/experiencesApi'
+import {
+  getAllExperiences,
+  createExperience,
+  getUserExperiences,
+  showUserExperience,
+  deleteExperience,
+  putFinalRating
+} from './services/experiencesApi'
 import decode from 'jwt-decode';
-import { Link, Route, withRouter } from 'react-router-dom';
-import { Redirect } from 'react-router-dom';
 import Header from './components/Header';
 import RegisterForm from './components/RegisterForm';
 import LoginForm from './components/LoginForm';
@@ -14,9 +22,22 @@ import UserProfile from './components/UserProfile';
 import CreateExperience from './components/CreateExperience';
 import UserExperienceList from './components/UserExperienceList';
 import SelectExperienceType from './components/SelectExperienceType';
-import RatingPage from './components/RatingPage'
-import Description from './components/Description'
+import RatingPage from './components/RatingPage';
+import Description from './components/Description';
+import AllExperiences from './components/AllExperiences';
+import StepSlider from './components/StepSlider';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import Button from '@material-ui/core/Button';
 
+const styles = {
+  root: {
+    width: 300,
+  },
+  slider: {
+    padding: '22px 0px',
+  },
+};
 
 class App extends Component {
   constructor(){
@@ -32,13 +53,16 @@ class App extends Component {
       experienceFormData: {
         exp_type: '',
         description: '',
-        init_rating: '',
-        second_rating: '',
-        final_rating: '',
+        init_rating: null,
+        second_rating: null,
+        final_rating:null,
       },
       currentUser: null,
+      currentExperience: null,
       users: [],
-      experiences: []
+      experiences: [],
+      allExperiences: [],
+      value: 5,
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -49,6 +73,13 @@ class App extends Component {
     this.handleExperienceChange = this.handleExperienceChange.bind(this);
     this.postExperience = this.postExperience.bind(this);
     this.selectType = this.selectType.bind(this);
+    this.fetchAllExperiences = this.fetchAllExperiences.bind(this);
+    this.handleSlideInit = this.handleSlideInit.bind(this);
+    this.handleSlideSecond = this.handleSlideSecond.bind(this);
+    this.handleSlideFinal = this.handleSlideFinal.bind(this);
+    this.showExperience = this.showExperience.bind(this);
+    this.destroyExperience = this.destroyExperience.bind(this);
+    this.updateFinalRating = this.updateFinalRating.bind(this);
   }
 
   handleChange(e) {
@@ -157,19 +188,89 @@ class App extends Component {
     this.setState({
       experiences
     })
-    console.log("getting experiences");
+    console.log("getting currentUser experiences");
     console.log(this.state.experiences);
+  }
+
+  async fetchAllExperiences() {
+    const allExperiences = await getAllExperiences();
+    this.setState({
+      allExperiences
+    })
+    console.log("gettin em all");
+    console.log(this.state.allExperiences);
+  }
+
+  handleExperienceChange(e) {
+    const { name, value } = e.target
+    this.setState( prevState => ({
+      experienceFormData: {
+        ...prevState.experienceFormData,
+        [name]: value
+      }
+    }))
+  }
+
+  handleSlideInit(event, value) {
+    this.setState( prevState => ({
+      experienceFormData: {
+        ...prevState.experienceFormData,
+        init_rating: value
+    }}))
+  };
+
+  handleSlideSecond(event, value) {
+    this.setState( prevState => ({
+      experienceFormData: {
+        ...prevState.experienceFormData,
+        second_rating: value
+    }}))
+  };
+
+  handleSlideFinal(event, value) {
+    this.setState( prevState => ({
+      currentExperience: {
+        ...prevState.currentExperience,
+        final_rating: value
+    }}))
+  };
+
+  async showExperience(user_id, id) {
+    const currentExperience = await showUserExperience(user_id, id);
+    this.setState({
+      currentExperience
+    })
+    console.log(this.state.currentExperience);
+    this.props.history.push("/final-rating")
+  }
+
+  async updateFinalRating(user_id, id, updatedExperience) {
+    const resp = await putFinalRating(user_id, id, updatedExperience)
+    const experiences = await getUserExperiences(user_id);
+    this.setState({
+      experiences
+    })
+    this.props.history.push("/user-profile");
+  }
+
+  async destroyExperience(user_id, id){
+    const resp = await deleteExperience(user_id, id)
+    console.log(resp);
+    const experiences = await getUserExperiences(user_id)
+    this.setState({
+      experiences
+    })
   }
 
   async componentDidMount() {
     await this.getUsers();
+    await this.fetchAllExperiences();
     localStorage.getItem("authToken") && await this.setCurrentUser();
     this.state.currentUser && await this.getExperiences(this.state.currentUser.sub);
   }
 
-
   render() {
-    const { formData, currentUser, experienceFormData } = this.state
+    const { formData, currentUser, experienceFormData, allExperiences, value } = this.state
     return (
       <div className="App">
         <Header
@@ -187,7 +288,6 @@ class App extends Component {
           handleChange={this.handleChange}
           currentUser={currentUser}/>
         )}/>}
-
         <Route exact path="/register" render={(props) => (
           <RegisterForm
           {...props}
@@ -200,7 +300,9 @@ class App extends Component {
         { currentUser && <Route exact path="/user-profile" render={(props) => (
           <UserProfile
           currentUser={currentUser}
-          experiences={this.state.experiences}/>
+          experiences={this.state.experiences}
+          showExperience={this.showExperience}
+          destroyExperience={this.destroyExperience}/>
         )} />}
 
         <Route exact path="/select-experience-type" render={(props) => (
@@ -219,6 +321,7 @@ class App extends Component {
           h2="How are you feeling about this experience?"
           route="/description-page"
           value={experienceFormData.init_rating}
+          handleSlideType={this.handleSlideInit}
           />
         )} />
 
@@ -232,10 +335,12 @@ class App extends Component {
           h2="How are you feeling?"
           route="/create-experience"
           value={experienceFormData.second_rating}
+          handleSlideType={this.handleSlideSecond}
           />
         )} />
 
-        <Route exact path="/final-rating" render={(props) => (
+        { currentUser &&
+          <Route exact path="/final-rating" render={(props) => (
           <RatingPage
           {...props}
           handleExperienceChange={this.handleExperienceChange}
@@ -244,8 +349,12 @@ class App extends Component {
           h1="Now that the situation has come to a conclusion"
           h2="Rate your feeling now!"
           route="/intial-graph"
+          value={this.state.currentExperience.final_rating}
+          handleSlideType={this.handleSlideFinal}
+          updateFinalRating={this.updateFinalRating}
+          currentExperience={this.state.currentExperience}
           />
-        )} />
+        )} />}
 
         <Route exact path="/description-page" render={(props) => (
           <Description {...props}
@@ -261,6 +370,11 @@ class App extends Component {
           postExperience={this.postExperience}
           experienceFormData={experienceFormData}
           />
+        )} />
+
+        <Route exact path="/all-experiences" render={(props) => (
+          <AllExperiences {...props}
+          allExperiences={allExperiences}/>
         )} />
       </div>
     );

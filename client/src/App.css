@@ -6,6 +6,18 @@
   --house: #FBC3A3;
 }
 
+::selection {
+  background: red;
+}
+
+#update {
+  color: yellow;
+}
+
+#update:hover {
+  cursor: pointer;
+}
+
 .App {
   background: linear-gradient(to bottom right, var(--dark-purp), var(--light-purp));
   text-align: center;
@@ -23,6 +35,10 @@
   align-items: center;
 }
 
+.user-profile-img {
+  margin: 10px;
+}
+
 .user-profile-container {
   background: linear-gradient(to bottom right, var(--dark-purp), var(--light-purp));
 }
@@ -30,6 +46,7 @@
 .user-experience-list {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  background: linear-gradient(to bottom right, var(--dark-purp), var(--light-purp));
 }
 
 .type-list {
@@ -62,6 +79,24 @@
   font-size: 35px;
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.rating-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-rating {
+  font-size: 200px;
+  border: 5px solid white;
+  border-radius: 100%;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 h1 {
