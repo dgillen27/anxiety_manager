@@ -15,6 +15,55 @@
   color: var(--house)
 }
 
+.header-container {
+  display: flex;
+  justify-content: space-around;
+  height: 10vh;
+  background: purple;
+  align-items: center;
+}
+
+.user-profile-container {
+  background: linear-gradient(to bottom right, var(--dark-purp), var(--light-purp));
+}
+
+.user-experience-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.type-list {
+  height: 80vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  background: linear-gradient(to bottom right, var(--dark-purp), var(--light-purp));
+}
+
+.type {
+  height: 40vh;
+  width: 49vw;
+  margin: 10px;
+  background: white;
+  color: black;
+  font-size: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-experience {
+  background: purple;
+  margin: 10px;
+  padding: 10px;
+}
+
+#prompt {
+  font-size: 35px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
 h1 {
   margin-top: 0;
   padding-top: 25px;
@@ -25,7 +74,8 @@ input {
 }
 
 a {
-  color: var(--peach)
+  color: var(--peach);
+  text-decoration: none;
 }
 
 .profile-image img {

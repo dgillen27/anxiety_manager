@@ -12,7 +12,10 @@ import LoginForm from './components/LoginForm';
 import Welcome from './components/Welcome';
 import UserProfile from './components/UserProfile';
 import CreateExperience from './components/CreateExperience';
-import UserExperienceList from './components/UserExperienceList'
+import UserExperienceList from './components/UserExperienceList';
+import SelectExperienceType from './components/SelectExperienceType';
+import RatingPage from './components/RatingPage'
+import Description from './components/Description'
 
 
 class App extends Component {
@@ -45,6 +48,7 @@ class App extends Component {
     this.getUsers = this.getUsers.bind(this);
     this.handleExperienceChange = this.handleExperienceChange.bind(this);
     this.postExperience = this.postExperience.bind(this);
+    this.selectType = this.selectType.bind(this);
   }
 
   handleChange(e) {
@@ -89,6 +93,7 @@ class App extends Component {
     })
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');
+    await this.getExperiences(this.state.currentUser.sub);
   }
 
   handleLogout() {
@@ -117,6 +122,14 @@ class App extends Component {
     }))
   }
 
+  selectType(type) {
+    this.setState({
+      experienceFormData: {
+        exp_type: type
+      }
+    })
+  }
+
   async postExperience(e) {
     e.preventDefault();
     const { experienceFormData } = this.state
@@ -126,6 +139,7 @@ class App extends Component {
     })
     console.log("Experience posted");
     console.log(this.state.currentExperience);
+    await this.getExperiences(this.state.currentUser.sub);
     this.props.history.push("/user-profile");
   }
 
@@ -149,7 +163,7 @@ class App extends Component {
 
   async componentDidMount() {
     await this.getUsers();
-    !this.state.currentUser && await this.setCurrentUser();
+    localStorage.getItem("authToken") && await this.setCurrentUser();
     this.state.currentUser && await this.getExperiences(this.state.currentUser.sub);
   }
 
@@ -188,6 +202,57 @@ class App extends Component {
           currentUser={currentUser}
           experiences={this.state.experiences}/>
         )} />}
+
+        <Route exact path="/select-experience-type" render={(props) => (
+          <SelectExperienceType
+          {...props}
+          selectType={this.selectType}/>
+        )} />
+
+        <Route exact path="/init-rating" render={(props) => (
+          <RatingPage
+          {...props}
+          handleExperienceChange={this.handleExperienceChange}
+          experienceFormData={experienceFormData}
+          name="init_rating"
+          h1="On a scale from 1 to 10"
+          h2="How are you feeling about this experience?"
+          route="/description-page"
+          value={experienceFormData.init_rating}
+          />
+        )} />
+
+        <Route exact path="/second-rating" render={(props) => (
+          <RatingPage
+          {...props}
+          handleExperienceChange={this.handleExperienceChange}
+          experienceFormData={experienceFormData}
+          name="second_rating"
+          h1="Now that you have written about the sitation"
+          h2="How are you feeling?"
+          route="/create-experience"
+          value={experienceFormData.second_rating}
+          />
+        )} />
+
+        <Route exact path="/final-rating" render={(props) => (
+          <RatingPage
+          {...props}
+          handleExperienceChange={this.handleExperienceChange}
+          experienceFormData={experienceFormData}
+          name="final_rating"
+          h1="Now that the situation has come to a conclusion"
+          h2="Rate your feeling now!"
+          route="/intial-graph"
+          />
+        )} />
+
+        <Route exact path="/description-page" render={(props) => (
+          <Description {...props}
+          handleExperienceChange={this.handleExperienceChange}
+          experienceFormData={experienceFormData}
+          />
+        )} />
 
         <Route exact path="/create-experience" render={(props) => (
           <CreateExperience
