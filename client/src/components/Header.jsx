@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Logo from './Logo'
+import Logo from './Logo';
+import HamburgerMenu from './HamburgerMenu';
 
 
 const Header = (props) => {
@@ -15,8 +16,10 @@ const Header = (props) => {
         <div><Link to="/login"><div className="header-button">Login</div></Link></div>}
         { currentUser && <Link to="/user-profile"><div className="header-button">Back to My Profile</div></Link>}
         { currentUser && <Link to="select-experience-type"><div className="header-button">Create an experience</div></Link>}
+        <Link to="/all-experiences"><div className="header-button" type="button">Check out everyone</div></Link>
         { localStorage.getItem("authToken") && <div className="header-button" id="hoverable" onClick={handleLogout}>Log Out</div> }
       </div>
+      <HamburgerMenu {...props}/>
     </div>
   )
 }

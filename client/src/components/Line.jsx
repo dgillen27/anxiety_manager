@@ -6,9 +6,14 @@ ReactChartkick.addAdapter(Chart)
 
 const Line = (props) => {
   const { experiences } = props
+  const experienceList = {}
+  experiences.forEach((experience, idx) => experienceList[experience.created_at] =
+  experience.final_rating?
+  ((experience.init_rating + experience.second_rating + experience.final_rating) / 3).toFixed(1) :
+  ((experience.init_rating + experience.second_rating) / 2).toFixed(1))
   return (
     <div className="line">
-      <LineChart data={{"2017-01-01": 11, "2017-01-02": 26, "2017-01-03": 1}} />
+      <LineChart data={experienceList} />
     </div>
   )
 }

@@ -21,7 +21,8 @@ import AllExperiences from './components/AllExperiences';
 import StepSlider from './components/StepSlider';
 import PieGraph from './components/PieGraph';
 import Line from './components/Line';
-import BarGraph from './components/BarGraph'
+import BarGraph from './components/BarGraph';
+import PopUp from './components/PopUp';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -64,6 +65,8 @@ class App extends Component {
       experiences: [],
       allExperiences: [],
       value: 5,
+      popup: true,
+      burger: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -81,6 +84,9 @@ class App extends Component {
     this.showExperience = this.showExperience.bind(this);
     this.destroyExperience = this.destroyExperience.bind(this);
     this.updateFinalRating = this.updateFinalRating.bind(this);
+    this.closePopup = this.closePopup.bind(this);
+    this.burgerShow = this.burgerShow.bind(this);
+    this.burgerClose = this.burgerClose.bind(this);
   }
 
   handleChange(e) {
@@ -121,7 +127,8 @@ class App extends Component {
     const token = await loginUser(this.state.formData);
     const userData = decode(token.jwt);
     this.setState({
-      currentUser: userData
+      currentUser: userData,
+      popup: true
     })
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');
@@ -264,6 +271,24 @@ class App extends Component {
     })
   }
 
+  closePopup() {
+    this.setState({
+      popup: false
+    })
+  }
+
+  burgerShow() {
+    this.setState({
+      burger: true
+    })
+  }
+
+  burgerClose() {
+    this.setState({
+      burger: false
+    })
+  }
+
   async componentDidMount() {
     await this.getUsers();
     await this.fetchAllExperiences();
@@ -277,7 +302,9 @@ class App extends Component {
       <div className="App">
         <Header
         handleLogout={this.handleLogout}
-        currentUser={currentUser}/>
+        currentUser={currentUser}
+        burgerShow={this.burgerShow}
+        burgerClose={this.burgerClose}/>
         <Route exact path="/" render={(props) => (
           <Welcome {...props}/>
         )} />
@@ -305,6 +332,8 @@ class App extends Component {
           experiences={this.state.experiences}
           showExperience={this.showExperience}
           destroyExperience={this.destroyExperience}
+          closePopup={this.closePopup}
+          popup={this.state.popup}
           />
         )} />}
 
