@@ -7,9 +7,8 @@ const Graphs = (props) => {
   const experienceList = {}
   experiences.forEach((experience, idx) => experienceList[experience.created_at] =
   experience.final_rating?
-  ((experience.init_rating + experience.second_rating + experience.final_rating) / 3).toFixed(1) : 
+  ((experience.init_rating + experience.second_rating + experience.final_rating) / 3).toFixed(1) :
   ((experience.init_rating + experience.second_rating) / 2).toFixed(1))
-  debugger;
   return(
     <div className="graphs-container">
       {/*<BarChart data={[["Work", 32], ["Play", 1492]]} />*/}

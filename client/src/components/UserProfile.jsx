@@ -9,7 +9,7 @@ const UserProfile = (props) => {
     <div className="user-profile-container">
       <div className="profile-image">
         <img src={currentUser.profile_img} alt="goat" />
-        <h1>{currentUser.username}'s Experiences</h1>
+        <div>{currentUser.username}'s Experiences</div>
           {experiences.length && <Graphs {...props}/>}
       </div>
         <UserExperienceList

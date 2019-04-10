@@ -5,7 +5,7 @@ const SelectExperienceType = (props) => {
   const { selectType } = props
   return (
     <div className="type-list">
-      <div id="prompt">What are you feeling anxious about?</div>
+      <div id="select-type-prompt">What are you feeling anxious about?</div>
       <Link to="/init-rating"><div onClick={() => selectType("Social")} className="type">Social</div></Link>
       <Link to="/init-rating"><div onClick={() => selectType("Work")} className="type">Work</div></Link>
       <Link to="/init-rating"><div onClick={() => selectType("Family")} className="type">Family</div></Link>

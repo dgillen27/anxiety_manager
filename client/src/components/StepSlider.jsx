@@ -9,6 +9,7 @@ const styles = {
   },
   slider: {
     padding: '22px 0px',
+    color: "red",
   },
 };
 
@@ -26,7 +27,7 @@ class StepSlider extends React.Component {
           classes={{ container: classes.slider }}
           name={this.props.name}
           value={this.props.value}
-          min={0}
+          min={1}
           max={10}
           step={1}
           onChange={this.props.handleSlide}

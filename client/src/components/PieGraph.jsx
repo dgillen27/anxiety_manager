@@ -17,4 +17,4 @@ const PieGraph = (props) => {
   )
 }
 
-export default PieGraph
+export default PieGraph;

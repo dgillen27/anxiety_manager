@@ -134,7 +134,7 @@ class App extends Component {
     this.setState({
       currentUser: null
     })
-    this.props.history.push('/welcome');
+    this.props.history.push('/');
   }
 
   async setCurrentUser() {
@@ -278,11 +278,11 @@ class App extends Component {
         <Header
         handleLogout={this.handleLogout}
         currentUser={currentUser}/>
-        <Route path="/welcome" render={(props) => (
+        <Route exact path="/" render={(props) => (
           <Welcome {...props}/>
         )} />
         { !this.state.currentUser && !localStorage.getItem("authToken") &&
-          <Route exact path="/login" render={(props) => (
+          <Route path="/login" render={(props) => (
           <LoginForm
           {...props}
           formData={formData}
@@ -290,7 +290,7 @@ class App extends Component {
           handleChange={this.handleChange}
           currentUser={currentUser}/>
         )}/>}
-        <Route exact path="/register" render={(props) => (
+        <Route path="/register" render={(props) => (
           <RegisterForm
           {...props}
           handleChange={this.handleChange}
