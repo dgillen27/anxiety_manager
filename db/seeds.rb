@@ -8,14 +8,14 @@
 
 
 dan = {
-  username: "dan",
+  username: "Dan",
   email: "dan@dan.com",
   password: "password",
   profile_img: "https://i.imgur.com/nwRqeIJ.jpg"
 }
 
 matt = {
-  username: "matt",
+  username: "Matt",
   email: "matt@matt.com",
   password: "password",
   profile_img: "https://i.imgur.com/nwRqeIJ.jpg"
@@ -25,7 +25,7 @@ User.create(dan)
 User.create(matt)
 
 exp = {
-  exp_type: "bad",
+  exp_type: "Work",
   init_rating: 3,
   second_rating: 5,
   final_rating: 10,
@@ -34,7 +34,7 @@ exp = {
 }
 
 exp2 = {
-  exp_type: "chad",
+  exp_type: "Family",
   init_rating: 10,
   second_rating: 10,
   final_rating: 10,

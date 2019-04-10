@@ -14,7 +14,7 @@ const registerUser = async (formData) => {
 }
 
 const loginUser = async (loginData) => {
-  const resp = await api.post(`/user_token`, {auth: loginData});
+  const resp = await api.post(`/user_token`, { auth: loginData });
   console.log(resp.data);
   return resp.data;
 }

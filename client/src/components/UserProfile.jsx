@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 import UserExperienceList from './UserExperienceList'
+import Graphs from './Graphs'
 
 const UserProfile = (props) => {
   const { experiences, currentUser } = props
@@ -9,11 +10,10 @@ const UserProfile = (props) => {
       <div className="profile-image">
         <img src={currentUser.profile_img} alt="goat" />
         <h1>{currentUser.username}'s Experiences</h1>
+          {experiences.length && <Graphs {...props}/>}
       </div>
         <UserExperienceList
-        experiences={experiences}
-        showExperience={props.showExperience}
-        destroyExperience={props.destroyExperience}/>
+        {...props}/>
       <div className="create-link">
         <Link to="select-experience-type"><button type="button">Create an experience</button></Link>
         <Link to="/all-experiences"><button type="button">Check out everyone</button></Link>

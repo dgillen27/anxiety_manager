@@ -5,14 +5,7 @@ import { Link, Route, withRouter } from 'react-router-dom';
 import './App.css';
 import { updateToken } from './services/api';
 import { registerUser, loginUser, getAllUsers } from './services/usersApi';
-import {
-  getAllExperiences,
-  createExperience,
-  getUserExperiences,
-  showUserExperience,
-  deleteExperience,
-  putFinalRating
-} from './services/experiencesApi'
+import { getAllExperiences, createExperience, getUserExperiences, showUserExperience, deleteExperience, putFinalRating } from './services/experiencesApi'
 import decode from 'jwt-decode';
 import Header from './components/Header';
 import RegisterForm from './components/RegisterForm';
@@ -26,9 +19,17 @@ import RatingPage from './components/RatingPage';
 import Description from './components/Description';
 import AllExperiences from './components/AllExperiences';
 import StepSlider from './components/StepSlider';
+import PieGraph from './components/PieGraph';
+import Line from './components/Line';
+import BarGraph from './components/BarGraph'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
+import Chart from 'chart.js'
+
+
+ReactChartkick.addAdapter(Chart)
 
 const styles = {
   root: {
@@ -124,6 +125,7 @@ class App extends Component {
     })
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');
+    await this.setCurrentUser();
     await this.getExperiences(this.state.currentUser.sub);
   }
 
@@ -302,7 +304,8 @@ class App extends Component {
           currentUser={currentUser}
           experiences={this.state.experiences}
           showExperience={this.showExperience}
-          destroyExperience={this.destroyExperience}/>
+          destroyExperience={this.destroyExperience}
+          />
         )} />}
 
         <Route exact path="/select-experience-type" render={(props) => (

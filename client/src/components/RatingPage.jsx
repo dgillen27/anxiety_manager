@@ -22,7 +22,7 @@ const RatingPage = (props) => {
       </div>
       <div>
         { (props.name !== "final_rating")?<Link to={props.route}><button type="button">Submit</button></Link>:
-        <button onClick={() => updateFinalRating(currentExperience.user_id, currentExperience.id, currentExperience)} type="button">Feck</button>}
+        <button onClick={() => updateFinalRating(currentExperience.user_id, currentExperience.id, currentExperience)} type="button">Update</button>}
       </div>
     </div>
   )
