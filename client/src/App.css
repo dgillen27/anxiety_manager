@@ -78,6 +78,7 @@ body {
   align-items: center;
   justify-content: center;
   transform: rotate(45deg);
+  animation: psych-spin infinite linear 200s;
 }
 
 #logo1 {
@@ -127,7 +128,7 @@ body {
 
 .header-button {
   transition: background-color, padding, font-size, 400ms;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .header-button:hover {
@@ -135,7 +136,41 @@ body {
   background-color: var(--hover-blue);
   padding: 10px;
   border-radius: 50px;
+  font-size: 21px;
+}
+
+#profile-button {
+  background: var(--material-blue);
+  width: 95%;
   font-size: 18px;
+  border-radius: 50px;
+  height: 25px;
+  margin-left: 3%;
+}
+
+#profile-button:hover {
+  color: white;
+  background: var(--material-blue);
+  padding: 3px;
+}
+
+.open-menu-content {
+  position: absolute;
+  top: 75px;
+  right: 0;
+  color: white;
+  background: black;
+  width: 500px;
+}
+
+.open-button {
+  border-bottom: 1px solid white;
+  height: 20px;
+}
+
+.open-button:hover {
+  background: white;
+  color: var(--material-blue);
 }
 
 .welcome-container {
@@ -234,15 +269,25 @@ body {
   margin-left: 16px;
   margin-bottom: 10px;
   box-shadow: 2px 5px 5px 0px rgba(0,0,0,0.30);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .user-profile img {
   height: 150px;
   width: 150px;
   border: 1px solid black;
-  border-radius: 100%;
-  align-self: flex-start;
+  border-radius: 50%;
   margin: 15px 0 0 15px;
+  justify-self: center;
+}
+
+.greet-user {
+  align-self: center;
+}
+
+#profile-center {
+  grid-column-start: 1;
 }
 
 .user-experience-list {
@@ -275,11 +320,26 @@ body {
   margin: 10px;
   background: white;
   color: black;
-  font-size: 100px;
+  font-size: 5rem;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  align-items: center; */
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.30);
+}
+
+.type img {
+  height: 100px;
+  width: 100px;
+}
+
+.image-select-container img {
+  width: 125px;
+  height: 125px;
+  border-radius: 100%;
 }
 
 #select-type-prompt {
@@ -297,13 +357,18 @@ body {
 
 .current-rating {
   font-size: 200px;
-  border: 6px solid black;
+  border: 6px solid var(--material-blue);
   border-radius: 100%;
   width: 300px;
   height: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+textarea {
+  height: 400px;
+  width: 95%;
 }
 
 /* h1 {
@@ -345,7 +410,7 @@ a {
 
 @media only screen and (max-width: 800px) {
   #logo-container {
-    left: 10px;
+    left: 20px;
   }
 
   .header-button {
@@ -372,7 +437,7 @@ a {
     flex-direction: column;
     position: relative;
     right: 50px;
-    transition: background-color 500ms;
+    transition: background-color 500ms, height 500ms, width 500ms;
   }
 
   .burger-container:hover {
@@ -381,6 +446,25 @@ a {
     right: 45px;
     background-color: var(--hover-blue);
     border-radius: 100%;
+    cursor: pointer;
+  }
+
+  .burger-container:active {
+    height: 60px;
+    width: 60px;
+    right: 45px;
+    background-color: var(--hover-blue);
+    border-radius: 100%;
+    cursor: pointer;
+  }
+
+  .burger-container:after {
+    height: 60px;
+    width: 60px;
+    right: 45px;
+    background-color: var(--hover-blue);
+    border-radius: 100%;
+    cursor: pointer;
   }
 
   .inner-user-profile-container {
@@ -397,6 +481,25 @@ a {
 
   .line {
     margin-right: 15px;
+  }
+
+  .type-list {
+    height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .type {
+    height: 30vh;
+    width: 95%;
+    font-size: 50px;
+  }
+
+  #select-type-prompt {
+    font-size: 2em;
+    grid-column-start: 1;
+    grid-column-end: 2;
   }
 }
 
@@ -418,5 +521,17 @@ a {
 
   .user-experience {
     margin: 10px 15px 10px 10px;
+  }
+}
+
+@keyframes psych-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

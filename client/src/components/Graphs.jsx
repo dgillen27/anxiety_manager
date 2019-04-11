@@ -12,7 +12,9 @@ const Graphs = (props) => {
   return(
     <div className="graphs-container">
       {/*<BarChart data={[["Work", 32], ["Play", 1492]]} />*/}
+      <div>Your Average Inital Feelings</div>
       <LineChart data={experienceList} />
+      <div>What You Are Most Anxious About</div>
       <PieChart data={[
       ["Social", experiences && experiences.filter(ex => ex.exp_type === "Social").length],
       ["Work", experiences && experiences.filter(ex => ex.exp_type === "Work").length],

@@ -23,6 +23,8 @@ import PieGraph from './components/PieGraph';
 import Line from './components/Line';
 import BarGraph from './components/BarGraph';
 import PopUp from './components/PopUp';
+import OpenMenu from './components/OpenMenu';
+import ImageSelect from './components/ImageSelect'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -87,6 +89,7 @@ class App extends Component {
     this.closePopup = this.closePopup.bind(this);
     this.burgerShow = this.burgerShow.bind(this);
     this.burgerClose = this.burgerClose.bind(this);
+    this.selectImage = this.selectImage.bind(this);
   }
 
   handleChange(e) {
@@ -168,6 +171,7 @@ class App extends Component {
         exp_type: type
       }
     })
+    window.scrollTo({top: 0, behavior:"auto"})
   }
 
   async postExperience(e) {
@@ -271,6 +275,14 @@ class App extends Component {
     })
   }
 
+  selectImage(profile_img) {
+    this.setState({
+      formData: {
+        profile_img
+      }
+    })
+  }
+
   closePopup() {
     this.setState({
       popup: false
@@ -297,7 +309,7 @@ class App extends Component {
   }
 
   render() {
-    const { formData, currentUser, experienceFormData, allExperiences, value } = this.state
+    const { formData, currentUser, experienceFormData, allExperiences, value, burger } = this.state
     return (
       <div className="App">
         <Header
@@ -308,6 +320,7 @@ class App extends Component {
         <Route exact path="/" render={(props) => (
           <Welcome {...props}/>
         )} />
+        {burger && <OpenMenu/>}
         { !this.state.currentUser && !localStorage.getItem("authToken") &&
           <Route path="/login" render={(props) => (
           <LoginForm
@@ -323,6 +336,7 @@ class App extends Component {
           handleChange={this.handleChange}
           handleRegister={this.handleRegister}
           formData={formData}
+          selectImage={this.selectImage}
           />
         )} />
 
@@ -350,7 +364,7 @@ class App extends Component {
           experienceFormData={experienceFormData}
           name="init_rating"
           h1="On a scale from 1 to 10"
-          h2="How are you feeling about this experience?"
+          h2="How anxious are you feeling about this experience?"
           route="/description-page"
           value={experienceFormData.init_rating}
           handleSlideType={this.handleSlideInit}

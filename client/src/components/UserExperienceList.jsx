@@ -18,7 +18,6 @@ const UserExperienceList = (props) => {
             <div>Current Average: {((experience.init_rating + experience.second_rating) / 2).toFixed(1)}</div>
           }
           <div>CreatedAt: {experience.created_at}</div>
-          <div>id: {experience.id}</div>
           <button onClick={() => destroyExperience(experience.user_id, experience.id)} type="button">Delete</button>
         </div>
       ))}

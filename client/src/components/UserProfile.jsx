@@ -15,17 +15,21 @@ const UserProfile = (props) => {
         <div className="user-profile">
           {/* popup && <PopUp {...props}/>*/}
           <img src={currentUser.profile_img} alt="goat" />
-          <div>{currentUser.username}'s Experiences</div>
-          <div>You currently have {experiences.length} posts</div>
+            <div className="greet-user">
+              <div>Welcome back, {currentUser.username}!</div>
+              <br/>
+              <div>You currently have {experiences.length} posts</div>
+            </div>
+            <div id="profile-center">
+              <Link to="/graphs"><div className="header-button" id="profile-button">Check your trends</div></Link>
+            </div>
+            { currentUser && <Link to="select-experience-type"><div className="header-button" id="profile-button">Talk About It!</div></Link>}
         </div>
         {experiences.length && <Line {...props}/>}
         {experiences.length && <PieGraph {...props}/>}
       </div>
       <UserExperienceList
       {...props}/>
-      <div className="create-link">
-        <Link to="select-experience-type"><button type="button">Create an experience</button></Link>
-      </div>
     </div>
   )
 }

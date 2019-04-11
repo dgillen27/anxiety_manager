@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import ImageSelect from './ImageSelect'
 const RegisterForm = (props) => {
   const { handleChange, handleRegister, formData } = props
   return (
@@ -17,6 +17,7 @@ const RegisterForm = (props) => {
         <div>
           <p>Already have an account? <Link to="/login">Log In</Link></p>
         </div>
+        <ImageSelect {...props}/>
       </div>
     </div>
   )
