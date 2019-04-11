@@ -8,25 +8,37 @@ import PopUp from './PopUp';
 import Chart from 'chart.js';
 
 const UserProfile = (props) => {
-  const { experiences, currentUser, popup } = props
+  const { experiences, currentUser, popup, morning_messages, afternoon_messages, night_messages } = props
+  const now = new Date().getHours();
+  const random = (arr) => {
+    const num = (Math.floor(Math.random() * Math.floor(arr.length)))
+    return num
+  }
   return(
     <div className="user-profile-container">
       <div className="inner-user-profile-container">
         <div className="user-profile">
-          {/* popup && <PopUp {...props}/>*/}
+          {/*popup && <PopUp {...props}/>*/}
           <img src={currentUser.profile_img} alt="goat" />
             <div className="greet-user">
-              <div>Welcome back, {currentUser.username}!</div>
+              {/*<div>Welcome back, {currentUser.username}!</div>
               <br/>
-              <div>You currently have {experiences.length} posts</div>
+              <div>You currently have {experiences.length} posts</div>*/}
+              { now >= 3 && now < 12 && <p>Good morning {props.currentUser.username}!</p>}
+              { now >= 3 && now < 12 &&<p>{morning_messages[random(morning_messages)]}</p>}
+              { now >= 12 && now <= 21 && <p>Good Afternoon {props.currentUser.username}!</p>}
+              { now >= 12 && now <= 21 && <p>{afternoon_messages[random(afternoon_messages)]}</p>}
+              { now < 3 && now > 21 && <p>Long day {props.currentUser.username}?</p>}
+              { now < 3 && now > 21 && <p>{night_messages[random(night_messages)]}</p>}
+              { experiences.length === 0 && <p>No data yet</p>}
             </div>
             <div id="profile-center">
               <Link to="/graphs"><div className="header-button" id="profile-button">Check your trends</div></Link>
             </div>
             { currentUser && <Link to="select-experience-type"><div className="header-button" id="profile-button">Talk About It!</div></Link>}
         </div>
-        {experiences.length && <Line {...props}/>}
-        {experiences.length && <PieGraph {...props}/>}
+        {experiences.length? <Line {...props}/> : <div></div>}
+        {experiences.length? <PieGraph {...props}/> : <div></div>}
       </div>
       <UserExperienceList
       {...props}/>

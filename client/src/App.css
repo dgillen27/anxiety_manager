@@ -1,14 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Heebo|Roboto:100,300,400|Ubuntu:500');
 
 :root {
-  --dark-purp: #280F36;
-  --light-purp: #632B6C;
-  --purp-pink: #C76A98;
-  --peach: #F19E9C;
-  --house: #FBC3A3;
   --material-blue: #2395F3;
   --grey: #FAFAFA;
-  --nice-orange: #F38324;
+  --nice-orange: rgb(243, 131, 36);
+  --hover-orange: #FF6324;
   --hover-blue: #2089E0;
 }
 
@@ -26,6 +22,7 @@
 
 body {
   background: #FAFAFA;
+  transition: 100ms;
 }
 
 .App {
@@ -195,7 +192,7 @@ body {
 }
 
 .welcome-button:hover {
-  background-color: #FF6324;
+  background-color: var(--hover-orange);
 }
 
 /* Trying to make fancy button highlight change */
@@ -216,15 +213,24 @@ body {
 
 .outer-login-container {
   width: 100%;
+  /* display: grid; */
   display: flex;
+  /* grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); */
   align-items: center;
   justify-content: center;
+}
+
+.left-login {
+  min-width: 320px;
+  height: 500px;
+  width: 100%;
 }
 
 .login-container {
   background: white;
   min-width: 320px;
-  width: 60%;
+  max-width: 875px;
+  width: 75%;
   min-height: 500px;
   height: 100%;
   box-shadow: 2px 5px 5px rgba(0,0,0,0.30);
@@ -233,21 +239,52 @@ body {
   align-items: center;
 }
 
-.login-container input {
-  background: var(--grey);
-}
-
 .login-form {
   display: flex;
   flex-direction: column;
-  min-width: 200px;
+  width: 75%;
+}
+
+input:focus {
+  outline: none;
+}
+
+.login-container input {
+  height: 40px;
+  /* min-width: 275px; */
+  width: 100%;
+  background: #ddd;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+  /* padding: 5px; */
+  font-size: 15px;
+}
+
+.login-container a {
+  color: var(--material-blue)
 }
 
 .login-form-button {
   background: var(--nice-orange);
+  color: white;
   border: none;
   border-radius: 50px;
-  margin-top: 2px;
+  /* margin-top: 2px; */
+  margin: 5px;
+  /* padding: 5px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 100%;
+  font-size: 20px;
+  transition: background-color 400ms;
+}
+
+.login-form-button:hover {
+  cursor: pointer;
+  background: var(--hover-orange);
 }
 
 .inner-user-profile-container {
@@ -281,6 +318,8 @@ body {
   margin: 15px 0 0 15px;
   justify-self: center;
 }
+
+
 
 .greet-user {
   align-self: center;
@@ -336,11 +375,36 @@ body {
   width: 100px;
 }
 
-.image-select-container img {
+.image-select-container {
+  min-width: 300px;
+  width: 600px;
+}
+
+.login-image {
   width: 125px;
   height: 125px;
+  border: 5px solid transparent;
   border-radius: 100%;
 }
+
+#selected-image {
+  border: 5px solid var(--material-blue);
+  position: relative;
+  left: 0px;
+}
+
+.image-select-container img:hover {
+  cursor: pointer;
+}
+
+.image-select-container img:active {
+  border: 5px solid var(--material-blue);
+}
+
+.image-select-container img:focus {
+  border: 5px solid var(--material-blue);
+}
+
 
 #select-type-prompt {
   font-size: 35px;
@@ -385,13 +449,30 @@ a {
   color: var(--nice-orange);
 }
 
+.outer-popup-container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .popup-container {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 100%;
   height: 75%;
-  /* display: flex; */
-  background: rgba(200, 200, 200, .5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: var(--nice-orange-op);
+}
+
+.popup-container h1 {
+  font-size: 35px;
 }
 
 #x {

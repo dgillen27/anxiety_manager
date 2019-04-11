@@ -21,7 +21,6 @@ import AllExperiences from './components/AllExperiences';
 import StepSlider from './components/StepSlider';
 import PieGraph from './components/PieGraph';
 import Line from './components/Line';
-import BarGraph from './components/BarGraph';
 import PopUp from './components/PopUp';
 import OpenMenu from './components/OpenMenu';
 import ImageSelect from './components/ImageSelect'
@@ -276,11 +275,12 @@ class App extends Component {
   }
 
   selectImage(profile_img) {
-    this.setState({
+    this.setState(prevState => ({
       formData: {
+        ...prevState.formData,
         profile_img
       }
-    })
+    }))
   }
 
   closePopup() {
@@ -289,7 +289,8 @@ class App extends Component {
     })
   }
 
-  burgerShow() {
+  burgerShow(e) {
+    e.preventDefault();
     this.setState({
       burger: true
     })
@@ -348,6 +349,12 @@ class App extends Component {
           destroyExperience={this.destroyExperience}
           closePopup={this.closePopup}
           popup={this.state.popup}
+          message_1="hello"
+          message_2="hi"
+          morning_messages={["Ready for a new day?", "I hope you're off to a good start this morning!"]}
+          afternoon_messages={["How has your day been so far?", "Anything on your mind so far today?"]}
+          night_messages={["Talk about your problems and be sure to get good nights rest!", "We hope you had a great day!"]}
+          messages={["How are you feeling today?", "Hopefully today is off to a good start!", "Yes wonderful", "wow message", "so message"]}
           />
         )} />}
 

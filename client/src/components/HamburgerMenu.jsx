@@ -1,7 +1,7 @@
 import React from 'react';
 
 const HamburgerMenu = (props) => {
-  const { currentUser, burgerShow, burgerClose } = props
+  const { currentUser, burgerShow } = props
   return (
     <div onClick={burgerShow} className="burger-container">
       <div className="burger"></div>

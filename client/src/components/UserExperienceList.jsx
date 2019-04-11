@@ -7,19 +7,19 @@ const UserExperienceList = (props) => {
     <div className="user-experience-list">
       {experiences && experiences.map(experience => (
       <div className="user-experience" key={experience.id}>
-          <div>Type: {experience.exp_type}</div>
-          <div>Description: {experience.description}</div>
-          <div>Initial Rating: {experience.init_rating}</div>
-          <div>Second Rating: {experience.second_rating}</div>
-          {experience.final_rating? <div>Final Rating: {experience.final_rating}</div>:
-          <div id="update" onClick={() => props.showExperience(experience.user_id, experience.id)}>Final Rating: Needs to be updated</div>}
-          {experience.final_rating?
-            <div>Average Rating: {((experience.init_rating + experience.second_rating + experience.final_rating) / 3).toFixed(1)}</div>:
-            <div>Current Average: {((experience.init_rating + experience.second_rating) / 2).toFixed(1)}</div>
-          }
-          <div>CreatedAt: {experience.created_at}</div>
-          <button onClick={() => destroyExperience(experience.user_id, experience.id)} type="button">Delete</button>
-        </div>
+        <div>Type: {experience.exp_type}</div>
+        <div>Description: {experience.description}</div>
+        <div>Initial Rating: {experience.init_rating}</div>
+        <div>Second Rating: {experience.second_rating}</div>
+        {experience.final_rating? <div>Final Rating: {experience.final_rating}</div>:
+        <div id="update" onClick={() => props.showExperience(experience.user_id, experience.id)}>Final Rating: Needs to be updated</div>}
+        {experience.final_rating?
+        <div>Average Rating: {((experience.init_rating + experience.second_rating + experience.final_rating) / 3).toFixed(1)}</div>:
+        <div>Current Average: {((experience.init_rating + experience.second_rating) / 2).toFixed(1)}</div>
+        }
+        <div>CreatedAt: {experience.created_at}</div>
+        <button onClick={() => destroyExperience(experience.user_id, experience.id)} type="button">Delete</button>
+      </div>
       ))}
     </div>
   )

@@ -5,7 +5,7 @@ import HamburgerMenu from './HamburgerMenu';
 
 
 const Header = (props) => {
-  const { handleLogout, currentUser, closeBurger } = props
+  const { handleLogout, currentUser } = props
   return (
     <div className="header-container">
       <div id="logo-container"><div><Logo/></div><div id="logo-name">Anxiety Manager</div></div>
