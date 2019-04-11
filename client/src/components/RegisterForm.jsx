@@ -13,7 +13,7 @@ const RegisterForm = (props) => {
           <input onChange={handleChange} type="password" name="password" value={formData.password} placeholder="password" />
           <input onChange={handleChange} type="hidden" name="profile_img" value={formData.profile_img} />
           <button className="login-form-button" type="submit">Register</button>
-          { formData.profile_img && <img className="login-image" id="selected-image" src={formData.profile_img} alt="" />}
+          {/* formData.profile_img && <img className="login-image" id="selected-image" src={formData.profile_img} alt="" />*/}
         </form>
         <div>
           <p>Already have an account? <Link to="/login">Log In</Link></p>

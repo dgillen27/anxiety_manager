@@ -23,6 +23,7 @@ import PieGraph from './components/PieGraph';
 import Line from './components/Line';
 import PopUp from './components/PopUp';
 import OpenMenu from './components/OpenMenu';
+import Graphs from './components/Graphs'
 import ImageSelect from './components/ImageSelect'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -89,6 +90,7 @@ class App extends Component {
     this.burgerShow = this.burgerShow.bind(this);
     this.burgerClose = this.burgerClose.bind(this);
     this.selectImage = this.selectImage.bind(this);
+    this.addBorder = this.addBorder.bind(this);
   }
 
   handleChange(e) {
@@ -112,6 +114,7 @@ class App extends Component {
     });
     localStorage.setItem("authToken", token.jwt)
     this.props.history.push('/user-profile');
+    await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
   }
 
   handleLoginChange(e) {
@@ -135,7 +138,7 @@ class App extends Component {
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');
     await this.setCurrentUser();
-    await this.getExperiences(this.state.currentUser.sub);
+    await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
   }
 
   handleLogout() {
@@ -176,13 +179,13 @@ class App extends Component {
   async postExperience(e) {
     e.preventDefault();
     const { experienceFormData } = this.state
-    const experience = await createExperience(this.state.currentUser.sub, experienceFormData);
+    const experience = await createExperience(this.state.currentUser.sub || this.state.currentUser.id, experienceFormData);
     this.setState({
       currentExperience: experience
     })
     console.log("Experience posted");
     console.log(this.state.currentExperience);
-    await this.getExperiences(this.state.currentUser.sub);
+    await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
     this.props.history.push("/user-profile");
   }
 
@@ -302,11 +305,15 @@ class App extends Component {
     })
   }
 
+  addBorder() {
+
+  }
+
   async componentDidMount() {
     await this.getUsers();
     await this.fetchAllExperiences();
     localStorage.getItem("authToken") && await this.setCurrentUser();
-    this.state.currentUser && await this.getExperiences(this.state.currentUser.sub);
+    this.state.currentUser && await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
   }
 
   render() {
@@ -338,6 +345,7 @@ class App extends Component {
           handleRegister={this.handleRegister}
           formData={formData}
           selectImage={this.selectImage}
+          addBorder={this.addBorder}
           />
         )} />
 
@@ -349,14 +357,18 @@ class App extends Component {
           destroyExperience={this.destroyExperience}
           closePopup={this.closePopup}
           popup={this.state.popup}
-          message_1="hello"
-          message_2="hi"
           morning_messages={["Ready for a new day?", "I hope you're off to a good start this morning!"]}
           afternoon_messages={["How has your day been so far?", "Anything on your mind so far today?"]}
           night_messages={["Talk about your problems and be sure to get good nights rest!", "We hope you had a great day!"]}
           messages={["How are you feeling today?", "Hopefully today is off to a good start!", "Yes wonderful", "wow message", "so message"]}
           />
         )} />}
+
+        <Route exact path="/graphs" render={(props) => (
+          <Graphs
+          currentUser={currentUser}
+          experiences={this.state.experiences}/>
+        )}/>
 
         <Route exact path="/select-experience-type" render={(props) => (
           <SelectExperienceType

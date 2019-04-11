@@ -141,14 +141,17 @@ body {
   width: 95%;
   font-size: 18px;
   border-radius: 50px;
-  height: 25px;
-  margin-left: 3%;
+  height: 30px;
+  margin: 2px;
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #profile-button:hover {
   color: white;
-  background: var(--material-blue);
-  padding: 3px;
+  background: #0C50DA;
 }
 
 .open-menu-content {
@@ -400,11 +403,6 @@ input:focus {
 .image-select-container img:active {
   border: 5px solid var(--material-blue);
 }
-
-.image-select-container img:focus {
-  border: 5px solid var(--material-blue);
-}
-
 
 #select-type-prompt {
   font-size: 35px;
