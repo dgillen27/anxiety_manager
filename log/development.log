@@ -62627,3 +62627,17 @@ Processing by ExperiencesController#all as HTML
 Completed 200 OK in 14ms (Views: 13.2ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/experiences" for ::1 at 2019-04-11 16:06:19 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.7ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 16:06:22 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.5ms)
+
+

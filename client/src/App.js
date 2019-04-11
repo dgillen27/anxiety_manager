@@ -25,6 +25,7 @@ import PopUp from './components/PopUp';
 import OpenMenu from './components/OpenMenu';
 import Graphs from './components/Graphs'
 import ImageSelect from './components/ImageSelect'
+import LoadingAnimation from './components/LoadingAnimation'
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
@@ -68,7 +69,8 @@ class App extends Component {
       allExperiences: [],
       value: 5,
       popup: true,
-      burger: false
+      burger: false,
+      loading: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleRegister = this.handleRegister.bind(this);
@@ -133,7 +135,8 @@ class App extends Component {
     const userData = decode(token.jwt);
     this.setState({
       currentUser: userData,
-      popup: true
+      popup: true,
+      loading: true
     })
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');
@@ -144,7 +147,8 @@ class App extends Component {
   handleLogout() {
     localStorage.removeItem("authToken");
     this.setState({
-      currentUser: null
+      currentUser: null,
+      loading: false
     })
     this.props.history.push('/');
   }
@@ -317,7 +321,7 @@ class App extends Component {
   }
 
   render() {
-    const { formData, currentUser, experienceFormData, allExperiences, value, burger } = this.state
+    const { formData, currentUser, experienceFormData, allExperiences, value, burger, loading } = this.state
     return (
       <div className="App">
         <Header
@@ -328,6 +332,7 @@ class App extends Component {
         <Route exact path="/" render={(props) => (
           <Welcome {...props}/>
         )} />
+        {!currentUser && loading && <LoadingAnimation/>}
         {burger && <OpenMenu/>}
         { !this.state.currentUser && !localStorage.getItem("authToken") &&
           <Route path="/login" render={(props) => (

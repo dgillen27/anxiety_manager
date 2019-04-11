@@ -261,7 +261,8 @@ input:focus {
   border-radius: 5px;
   margin: 5px;
   /* padding: 5px; */
-  font-size: 15px;
+  font-size: 20px;
+  text-align: center;
 }
 
 .login-container a {
@@ -487,6 +488,57 @@ a {
   align-self: center;
 }
 
+.square {
+  position: absolute;
+  top: 85px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  border-bottom: 1px solid black;
+  background: var(--grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+.inner-square {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  bottom: 10vh;
+}
+
+.circle {
+  height: 50px;
+  width: 50px;
+  background: red;
+  border-radius: 100%;
+  position: relative;
+  margin: 0;
+  border: 1px solid black;
+}
+
+#circle-1 {
+  background: var(--material-blue);
+  animation: circle-one infinite 2s cubic-bezier(.42,0,.58,1);
+}
+
+#circle-2 {
+  background: white;
+  animation: circle-two infinite 2s cubic-bezier(.42,0,.58,1);
+}
+
+#circle-3 {
+  background: white;
+  animation: circle-three infinite 2s cubic-bezier(.42,0,.58,1);
+}
+
+#circle-4 {
+  background: var(--nice-orange);
+  animation: circle-four infinite 2s cubic-bezier(.42,0,.58,1);
+}
+
 @media only screen and (max-width: 800px) {
   #logo-container {
     left: 20px;
@@ -612,5 +664,65 @@ a {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes circle-one {
+  0% {
+    top: 0px;
+    left: 0px;
+  }
+  50% {
+    top: 200px;
+    left: 200px;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+  }
+}
+
+@keyframes circle-two {
+  0% {
+    top: -50px;
+    left: 200px
+  }
+  50% {
+    top: 150px;
+    left: 0px;
+  }
+  100% {
+    top: -50px;
+    left: 200px
+  }
+}
+
+@keyframes circle-three {
+  0% {
+    top: 100px;
+    left: 0px;
+  }
+  50% {
+    top: -100px;
+    left: 200px;
+  }
+  100% {
+    top: 100px;
+    left: 0px;
+  }
+}
+
+@keyframes circle-four {
+  0% {
+    top: 50px;
+    left: 200px;
+  }
+  50% {
+    top: -150px;
+    left: 0;
+  }
+  100% {
+    top: 50px;
+    left: 200px;
   }
 }
