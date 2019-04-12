@@ -112,7 +112,13 @@ class App extends Component {
     const token = await loginUser(formData);
     console.log(user);
     this.setState({
-      currentUser: user
+      currentUser: user,
+      formData: {
+        username: '',
+        email: '',
+        profile_img: '',
+        password: '',
+      }
     });
     localStorage.setItem("authToken", token.jwt)
     this.props.history.push('/user-profile');
@@ -136,7 +142,13 @@ class App extends Component {
     this.setState({
       currentUser: userData,
       popup: true,
-      loading: true
+      loading: true,
+      formData: {
+        username: '',
+        email: '',
+        profile_img: '',
+        password: '',
+      }
     })
     localStorage.setItem("authToken", token.jwt);
     this.props.history.push('/user-profile');

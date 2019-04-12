@@ -367,6 +367,10 @@ button:focus {
   border-radius: 100%;
 }
 
+.login-image:active {
+  border-color: var(--material-blue)
+}
+
 #selected-image {
   border: 5px solid var(--material-blue);
   position: relative;
