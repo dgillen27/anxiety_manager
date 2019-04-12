@@ -62641,3 +62641,1284 @@ Processing by ExperiencesController#all as HTML
 Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/experiences" for ::1 at 2019-04-11 19:10:48 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (1.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:51:09 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:51:09 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.7ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-11 19:51:48 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"username"=>"", "email"=>"atom", "profile_img"=>"", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"username"=>"", "email"=>"atom", "profile_img"=>"", "password"=>"[FILTERED]"}}}
+Unpermitted parameters: :username, :profile_img
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "atom"], ["LIMIT", 1]]
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-11 19:51:49 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"username"=>"", "email"=>"atom", "profile_img"=>"", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"username"=>"", "email"=>"atom", "profile_img"=>"", "password"=>"[FILTERED]"}}}
+Unpermitted parameters: :username, :profile_img
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "atom"], ["LIMIT", 1]]
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+Started POST "/users" for ::1 at 2019-04-11 19:52:11 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"person", "email"=>"person", "password"=>"[FILTERED]", "profile_img"=>"https://i.imgur.com/oeAy5t4.png"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "profile_img", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "person"], ["email", "person"], ["profile_img", "https://i.imgur.com/oeAy5t4.png"], ["password_digest", "$2a$10$Bx8teOwxLfv1cWZGVJG/4e6DnKF3ByWf5vcIO9DWWUotyQbp/SOxG"], ["created_at", "2019-04-11 23:52:11.081493"], ["updated_at", "2019-04-11 23:52:11.081493"]]
+  ↳ app/controllers/users_controller.rb:20
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20
+Completed 201 Created in 65ms (Views: 0.5ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-11 19:52:11 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"username"=>"person", "email"=>"person", "profile_img"=>"https://i.imgur.com/oeAy5t4.png", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"username"=>"person", "email"=>"person", "profile_img"=>"https://i.imgur.com/oeAy5t4.png", "password"=>"[FILTERED]"}}}
+Unpermitted parameters: :username, :profile_img
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "person"], ["LIMIT", 1]]
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :username, :profile_img
+Completed 201 Created in 59ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:52:11 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-11 19:52:19 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"username"=>"person", "email"=>"person", "profile_img"=>"https://i.imgur.com/oeAy5t4.png", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"username"=>"person", "email"=>"person", "profile_img"=>"https://i.imgur.com/oeAy5t4.png", "password"=>"[FILTERED]"}}}
+Unpermitted parameters: :username, :profile_img
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "person"], ["LIMIT", 1]]
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :username, :profile_img
+Completed 201 Created in 62ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:52:19 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/28/experiences" for ::1 at 2019-04-11 19:53:11 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Family", "description"=>"Something special", "init_rating"=>8, "second_rating"=>8, "user_id"=>28}, "user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.6ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Family"], ["init_rating", 8], ["second_rating", 8], ["description", "Something special"], ["created_at", "2019-04-11 23:53:11.347301"], ["updated_at", "2019-04-11 23:53:11.347301"], ["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:53:11 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/28/experiences" for ::1 at 2019-04-11 19:53:23 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Social", "description"=>"asdfasdf", "init_rating"=>3, "second_rating"=>5, "user_id"=>28}, "user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.4ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Social"], ["init_rating", 3], ["second_rating", 5], ["description", "asdfasdf"], ["created_at", "2019-04-11 23:53:23.817577"], ["updated_at", "2019-04-11 23:53:23.817577"], ["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:53:23 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:53:48 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:53:48 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:53:48 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/28/experiences/43" for ::1 at 2019-04-11 19:53:56 -0400
+Processing by ExperiencesController#show as HTML
+  Parameters: {"user_id"=>"28", "id"=>"43"}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:18
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:19
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:55:57 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:55:57 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:55:57 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:57:11 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:57:11 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 12ms (Views: 11.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:57:11 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:57:30 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:57:30 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:57:30 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:57:36 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:57:36 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:57:36 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:58:06 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:58:06 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:58:06 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:58:09 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:58:09 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:58:09 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:58:30 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:58:30 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:58:30 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 19:58:38 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 19:58:38 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 19:58:38 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:02:34 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (34.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 40ms (Views: 5.3ms | ActiveRecord: 34.7ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:02:35 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:02:35 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:02:53 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (39.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 45ms (Views: 5.2ms | ActiveRecord: 39.9ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:02:53 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:02:53 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:04:23 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:04:23 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:04:23 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:04:38 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:04:38 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 13ms (Views: 12.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:04:38 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:04:39 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:04:39 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:04:39 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:06:36 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:06:36 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:06:36 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:06:37 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:06:37 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:06:37 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:06:41 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:06:41 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 11ms (Views: 10.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:06:41 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/28/experiences" for ::1 at 2019-04-11 20:06:56 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"", "description"=>"", "init_rating"=>nil, "second_rating"=>nil, "final_rating"=>nil, "user_id"=>28}, "user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.3ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["exp_type", ""], ["description", ""], ["created_at", "2019-04-12 00:06:56.205218"], ["updated_at", "2019-04-12 00:06:56.205218"], ["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:06:56 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:07:44 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:07:44 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:07:44 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:07:49 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:07:49 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:07:49 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/28/experiences" for ::1 at 2019-04-11 20:08:01 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"", "description"=>"ibuasdfibsdf", "init_rating"=>10, "second_rating"=>5, "final_rating"=>nil, "user_id"=>28}, "user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.3ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", ""], ["init_rating", 10], ["second_rating", 5], ["description", "ibuasdfibsdf"], ["created_at", "2019-04-12 00:08:01.364861"], ["updated_at", "2019-04-12 00:08:01.364861"], ["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:08:01 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences/46" for ::1 at 2019-04-11 20:08:06 -0400
+Processing by ExperiencesController#show as HTML
+  Parameters: {"user_id"=>"28", "id"=>"46"}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:18
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:19
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/28/experiences/46" for ::1 at 2019-04-11 20:08:40 -0400
+Processing by ExperiencesController#update as HTML
+  Parameters: {"id"=>"46", "exp_type"=>"", "init_rating"=>10, "second_rating"=>5, "final_rating"=>1, "description"=>"ibuasdfibsdf", "created_at"=>"2019-04-12T00:08:01.364Z", "updated_at"=>"2019-04-12T00:08:01.364Z", "user_id"=>"28", "experience"=>{"id"=>"46", "exp_type"=>"", "init_rating"=>10, "second_rating"=>5, "final_rating"=>1, "description"=>"ibuasdfibsdf", "created_at"=>"2019-04-12T00:08:01.364Z", "updated_at"=>"2019-04-12T00:08:01.364Z", "user_id"=>"28"}}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:37
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:38
+Unpermitted parameters: :id, :exp_type, :init_rating, :second_rating, :description, :created_at, :updated_at, :user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mExperience Update (0.3ms)[0m  [1m[33mUPDATE "experiences" SET "final_rating" = $1, "updated_at" = $2 WHERE "experiences"."id" = $3[0m  [["final_rating", 1], ["updated_at", "2019-04-12 00:08:40.493746"], ["id", 46]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:39
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:08:40 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences/43" for ::1 at 2019-04-11 20:08:48 -0400
+Processing by ExperiencesController#show as HTML
+  Parameters: {"user_id"=>"28", "id"=>"43"}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:18
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:19
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/28/experiences/43" for ::1 at 2019-04-11 20:08:50 -0400
+Processing by ExperiencesController#update as HTML
+  Parameters: {"id"=>"43", "exp_type"=>"Family", "init_rating"=>8, "second_rating"=>8, "final_rating"=>5, "description"=>"Something special", "created_at"=>"2019-04-11T23:53:11.347Z", "updated_at"=>"2019-04-11T23:53:11.347Z", "user_id"=>"28", "experience"=>{"id"=>"43", "exp_type"=>"Family", "init_rating"=>8, "second_rating"=>8, "final_rating"=>5, "description"=>"Something special", "created_at"=>"2019-04-11T23:53:11.347Z", "updated_at"=>"2019-04-11T23:53:11.347Z", "user_id"=>"28"}}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:37
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 43], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:38
+Unpermitted parameters: :id, :exp_type, :init_rating, :second_rating, :description, :created_at, :updated_at, :user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mExperience Update (0.3ms)[0m  [1m[33mUPDATE "experiences" SET "final_rating" = $1, "updated_at" = $2 WHERE "experiences"."id" = $3[0m  [["final_rating", 5], ["updated_at", "2019-04-12 00:08:50.709047"], ["id", 43]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:39
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:08:50 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences/44" for ::1 at 2019-04-11 20:08:53 -0400
+Processing by ExperiencesController#show as HTML
+  Parameters: {"user_id"=>"28", "id"=>"44"}
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:18
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:19
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started PUT "/users/28/experiences/44" for ::1 at 2019-04-11 20:08:55 -0400
+Processing by ExperiencesController#update as HTML
+  Parameters: {"id"=>"44", "exp_type"=>"Social", "init_rating"=>3, "second_rating"=>5, "final_rating"=>10, "description"=>"asdfasdf", "created_at"=>"2019-04-11T23:53:23.817Z", "updated_at"=>"2019-04-11T23:53:23.817Z", "user_id"=>"28", "experience"=>{"id"=>"44", "exp_type"=>"Social", "init_rating"=>3, "second_rating"=>5, "final_rating"=>10, "description"=>"asdfasdf", "created_at"=>"2019-04-11T23:53:23.817Z", "updated_at"=>"2019-04-11T23:53:23.817Z", "user_id"=>"28"}}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:37
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 44], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:38
+Unpermitted parameters: :id, :exp_type, :init_rating, :second_rating, :description, :created_at, :updated_at, :user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mExperience Update (0.2ms)[0m  [1m[33mUPDATE "experiences" SET "final_rating" = $1, "updated_at" = $2 WHERE "experiences"."id" = $3[0m  [["final_rating", 10], ["updated_at", "2019-04-12 00:08:55.428852"], ["id", 44]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:39
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:08:55 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/28/experiences/45" for ::1 at 2019-04-11 20:08:57 -0400
+Processing by ExperiencesController#show as HTML
+  Parameters: {"user_id"=>"28", "id"=>"45"}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:18
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:19
+Completed 200 OK in 3ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started PUT "/users/28/experiences/45" for ::1 at 2019-04-11 20:08:59 -0400
+Processing by ExperiencesController#update as HTML
+  Parameters: {"id"=>"45", "exp_type"=>"", "init_rating"=>nil, "second_rating"=>nil, "final_rating"=>4, "description"=>"", "created_at"=>"2019-04-12T00:06:56.205Z", "updated_at"=>"2019-04-12T00:06:56.205Z", "user_id"=>"28", "experience"=>{"id"=>"45", "exp_type"=>"", "init_rating"=>nil, "second_rating"=>nil, "final_rating"=>4, "description"=>"", "created_at"=>"2019-04-12T00:06:56.205Z", "updated_at"=>"2019-04-12T00:06:56.205Z", "user_id"=>"28"}}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:37
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:38
+Unpermitted parameters: :id, :exp_type, :init_rating, :second_rating, :description, :created_at, :updated_at, :user_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[36mExperience Update (0.3ms)[0m  [1m[33mUPDATE "experiences" SET "final_rating" = $1, "updated_at" = $2 WHERE "experiences"."id" = $3[0m  [["final_rating", 4], ["updated_at", "2019-04-12 00:08:59.744173"], ["id", 45]]
+  ↳ app/controllers/experiences_controller.rb:39
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:39
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:08:59 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/28/experiences" for ::1 at 2019-04-11 20:09:50 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Work", "description"=>"things siubsabf\n", "init_rating"=>8, "second_rating"=>5, "user_id"=>28}, "user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.3ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Work"], ["init_rating", 8], ["second_rating", 5], ["description", "things siubsabf\n"], ["created_at", "2019-04-12 00:09:50.678479"], ["updated_at", "2019-04-12 00:09:50.678479"], ["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:09:50 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:10:34 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:10:34 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:10:34 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:10:50 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:10:50 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:10:50 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:10:59 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:10:59 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 6.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/28/experiences" for ::1 at 2019-04-11 20:10:59 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"28"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 28]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:14:20 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:14:20 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.4ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:18:39 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:18:39 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 10ms (Views: 9.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:19:59 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:19:59 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.7ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 15ms (Views: 13.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:20:07 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 8ms (Views: 7.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:20:07 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.5ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 13ms (Views: 12.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:21:48 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:21:48 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:21:54 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:21:54 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:22:23 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:22:23 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 7ms (Views: 7.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:23:21 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:23:22 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.9ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/user_token" for ::1 at 2019-04-11 20:26:20 -0400
+Processing by UserTokenController#create as HTML
+  Parameters: {"auth"=>{"username"=>"", "email"=>"pass", "profile_img"=>"", "password"=>"[FILTERED]"}, "user_token"=>{"auth"=>{"username"=>"", "email"=>"pass", "profile_img"=>"", "password"=>"[FILTERED]"}}}
+Unpermitted parameters: :username, :profile_img
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "pass"], ["LIMIT", 1]]
+  ↳ /Library/Ruby/Gems/2.3.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Unpermitted parameters: :username, :profile_img
+Completed 201 Created in 59ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:26:21 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:30:12 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 4.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:30:12 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:30:12 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:30:18 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:30:19 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:30:19 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:30:25 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 6ms (Views: 5.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:30:25 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.3ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 8ms (Views: 7.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:30:25 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.4ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/27/experiences/42" for ::1 at 2019-04-11 20:32:11 -0400
+Processing by ExperiencesController#destroy as HTML
+  Parameters: {"user_id"=>"27", "id"=>"42"}
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:56
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:48
+  [1m[36mCACHE Experience Load (0.0ms)[0m  [1m[34mSELECT  "experiences".* FROM "experiences" WHERE "experiences"."id" = $1 LIMIT $2[0m  [["id", 42], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:49
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:50
+  [1m[36mExperience Destroy (0.2ms)[0m  [1m[31mDELETE FROM "experiences" WHERE "experiences"."id" = $1[0m  [["id", 42]]
+  ↳ app/controllers/experiences_controller.rb:50
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:50
+Completed 204 No Content in 4ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:32:11 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/27/experiences" for ::1 at 2019-04-11 20:32:25 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Work", "description"=>"NO", "init_rating"=>8, "second_rating"=>5, "user_id"=>27}, "user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.4ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Work"], ["init_rating", 8], ["second_rating", 5], ["description", "NO"], ["created_at", "2019-04-12 00:32:25.808063"], ["updated_at", "2019-04-12 00:32:25.808063"], ["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:32:25 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.1ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/27/experiences" for ::1 at 2019-04-11 20:32:44 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Social", "description"=>"Hello", "init_rating"=>10, "second_rating"=>3, "user_id"=>27}, "user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.3ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Social"], ["init_rating", 10], ["second_rating", 3], ["description", "Hello"], ["created_at", "2019-04-12 00:32:44.947399"], ["updated_at", "2019-04-12 00:32:44.947399"], ["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:32:44 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/27/experiences" for ::1 at 2019-04-11 20:33:39 -0400
+Processing by ExperiencesController#create as HTML
+  Parameters: {"experience"=>{"exp_type"=>"Personal", "description"=>"ihbasdf", "init_rating"=>3, "second_rating"=>1, "user_id"=>27}, "user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:25
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[36mExperience Create (0.3ms)[0m  [1m[32mINSERT INTO "experiences" ("exp_type", "init_rating", "second_rating", "description", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["exp_type", "Personal"], ["init_rating", 3], ["second_rating", 1], ["description", "ihbasdf"], ["created_at", "2019-04-12 00:33:39.983921"], ["updated_at", "2019-04-12 00:33:39.983921"], ["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:28
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/experiences_controller.rb:28
+Completed 201 Created in 5ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:33:39 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.2ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 20:53:10 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 9ms (Views: 7.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/experiences" for ::1 at 2019-04-11 20:53:10 -0400
+Processing by ExperiencesController#all as HTML
+  [1m[36mExperience Load (0.8ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences"[0m
+  ↳ app/controllers/experiences_controller.rb:13
+Completed 200 OK in 15ms (Views: 13.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/27/experiences" for ::1 at 2019-04-11 20:53:11 -0400
+Processing by ExperiencesController#index as HTML
+  Parameters: {"user_id"=>"27"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  ↳ app/controllers/experiences_controller.rb:6
+  [1m[36mExperience Load (0.6ms)[0m  [1m[34mSELECT "experiences".* FROM "experiences" WHERE "experiences"."user_id" = $1[0m  [["user_id", 27]]
+  ↳ app/controllers/experiences_controller.rb:8
+Completed 200 OK in 8ms (Views: 3.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 21:25:23 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users" for ::1 at 2019-04-11 21:25:30 -0400
+Processing by UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:7
+Completed 200 OK in 8ms (Views: 6.8ms | ActiveRecord: 0.5ms)
+
+

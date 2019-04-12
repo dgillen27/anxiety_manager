@@ -401,7 +401,7 @@ class App extends Component {
           handleExperienceChange={this.handleExperienceChange}
           experienceFormData={experienceFormData}
           name="second_rating"
-          h1="Now that you have written about the sitation"
+          h1="Now that you have written about the situation"
           h2="How are you feeling?"
           route="/create-experience"
           value={experienceFormData.second_rating}

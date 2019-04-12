@@ -2,6 +2,16 @@ import React from 'react';
 
 const ImageSelect = (props) => {
   const { selectImage } = props
+  const images = [
+    "https://i.imgur.com/nwRqeIJ.jpg",
+    "https://i.imgur.com/oeAy5t4.png",
+    "https://i.imgur.com/PuypgrS.jpg",
+    "https://i.imgur.com/VXltKvj.png",
+    "https://i.imgur.com/xYivAbf.jpg",
+    "https://i.imgur.com/SkPcqfX.jpg",
+    "https://i.imgur.com/M4AiPI7.jpg",
+    "https://i.imgur.com/SF2YpwS.png"
+  ]
   return(
     <div className="image-select-container">
       <h1>Select a Profile Picture</h1>

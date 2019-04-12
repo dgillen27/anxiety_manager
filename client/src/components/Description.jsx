@@ -7,7 +7,7 @@ const Description = (props) => {
     <div className="description-page">
       <textarea maxLength="255" onChange={handleExperienceChange} type="text" name="description"
       value={experienceFormData.description} placeholder="Talk about it"/>
-      <Link to="/second-rating"><button type="button">next</button></Link>
+      <Link to="/second-rating"><div className="welcome-button" id="area-button" type="button">next</div></Link>
     </div>
   )
 }

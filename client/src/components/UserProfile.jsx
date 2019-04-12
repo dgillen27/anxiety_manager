@@ -21,16 +21,14 @@ const UserProfile = (props) => {
           {/*popup && <PopUp {...props}/>*/}
           <img src={currentUser.profile_img} alt="goat" />
             <div className="greet-user">
-              {/*<div>Welcome back, {currentUser.username}!</div>
-              <br/>
-              <div>You currently have {experiences.length} posts</div>*/}
-              { now >= 3 && now < 12 && <p>Good morning {props.currentUser.username}!</p>}
+              { now >= 0 && now < 12 && <p>Good morning {props.currentUser.username}!</p>}
               { now >= 3 && now < 12 &&<p>{morning_messages[random(morning_messages)]}</p>}
               { now >= 12 && now <= 21 && <p>Good Afternoon {props.currentUser.username}!</p>}
               { now >= 12 && now <= 21 && <p>{afternoon_messages[random(afternoon_messages)]}</p>}
-              { now < 3 && now > 21 && <p>Long day {props.currentUser.username}?</p>}
-              { now < 3 && now > 21 && <p>{night_messages[random(night_messages)]}</p>}
-              { experiences.length === 0 && <p>No data yet</p>}
+              { now >= 21 && <p>Long day {props.currentUser.username}?</p>}
+              { now >= 21 && <p>{night_messages[random(night_messages)]}</p>}
+              {experiences.length === 0 && <div>To get started, talk about your problems here &#x2193;</div>}
+              {experiences.length === 1 && <div>Great! You've created your first post, come back anytime!</div>}
             </div>
             <div id="profile-center">
               <Link to="/graphs"><div className="header-button" id="profile-button">Check your trends</div></Link>

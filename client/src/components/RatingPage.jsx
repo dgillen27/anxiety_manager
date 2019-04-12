@@ -25,11 +25,11 @@ const RatingPage = (props) => {
   }
   return(
     <div className="rating-page">
-      { (props.name === "init_rating" && experienceFormData.exp_type === "Social" || experienceFormData.exp_type === "Personal") && <div className="init-prompt">So you're feeling anxious about something {experienceFormData.exp_type.toLowerCase()}?</div>}
-      { (props.name === "init_rating" && experienceFormData.exp_type === "Work" || experienceFormData.exp_type === "Family") && <div className="init-prompt">So you're feeling anxious about something {experienceFormData.exp_type.toLowerCase()} related?</div>}
-      <br/>
+      { (props.name === "init_rating" && experienceFormData.exp_type === "Social" || experienceFormData.exp_type === "Personal")
+        && <div className="init-prompt">So you're feeling anxious about something {experienceFormData.exp_type.toLowerCase()}?</div>}
+      { (props.name === "init_rating" && experienceFormData.exp_type === "Work" || experienceFormData.exp_type === "Family")
+        && <div className="init-prompt">So you're feeling anxious about something {experienceFormData.exp_type.toLowerCase()} related?</div>}
       <div>{props.h1}</div>
-      <br/>
       <div>{props.h2}</div>
       <StepSlider
       name={props.name}
@@ -43,9 +43,9 @@ const RatingPage = (props) => {
         { props.value >= 7 && props.value < 9 && <div style={seven_eight}>{props.value}</div>}
         { props.value >= 9 && <div style={nine_ten}>{props.value}</div>}
       </div>
-      <div>
-        { (props.name !== "final_rating")?<Link to={props.route}><button type="button">Submit</button></Link>:
-        <button onClick={() => updateFinalRating(currentExperience.user_id, currentExperience.id, currentExperience)} type="button">Update</button>}
+      <div className="rating-button-container">
+        { (props.name !== "final_rating")?<Link to={props.route}><div className="welcome-button" id="rating-button" type="button">Submit</div></Link>:
+        <div className="welcome-button" id="rating-button" onClick={() => updateFinalRating(currentExperience.user_id, currentExperience.id, currentExperience)} type="button">Update</div>}
       </div>
     </div>
   )
