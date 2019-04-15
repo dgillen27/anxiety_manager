@@ -16,7 +16,6 @@ const Header = (props) => {
         { currentUser? <Link to="/user-profile"><div className="header-button">{currentUser.username}</div></Link> :
         <div><Link to="/login"><div className="header-button">Login</div></Link></div>}
         { currentUser && <Link to="select-experience-type"><div className="header-button">Talk About It!</div></Link>}
-        <Link to="/all-experiences"><div className="header-button" type="button">Check Out Everyone</div></Link>
         { localStorage.getItem("authToken") && <div className="header-button" id="hoverable" onClick={handleLogout}>Log Out</div> }
       </div>
       <RenderPropsMenu {...props}/>
