@@ -341,8 +341,12 @@ class App extends Component {
         currentUser={currentUser}
         burgerShow={this.burgerShow}
         burgerClose={this.burgerClose}/>
+
         <Route exact path="/" render={(props) => (
-          <Welcome {...props}/>
+          <Welcome
+          currentUser={currentUser}
+          {...props}/>
+
         )} />
         {!currentUser && loading && <LoadingAnimation/>}
         {burger && <OpenMenu/>}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
 import HamburgerMenu from './HamburgerMenu';
+import RenderPropsMenu from './MenuButton'
 
 
 const Header = (props) => {
@@ -18,7 +19,8 @@ const Header = (props) => {
         <Link to="/all-experiences"><div className="header-button" type="button">Check Out Everyone</div></Link>
         { localStorage.getItem("authToken") && <div className="header-button" id="hoverable" onClick={handleLogout}>Log Out</div> }
       </div>
-      <HamburgerMenu {...props}/>
+      <RenderPropsMenu {...props}/>
+      {/*<HamburgerMenu {...props}/>*/}
     </div>
   )
 }
