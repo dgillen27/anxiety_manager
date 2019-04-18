@@ -663,6 +663,11 @@ a {
   #the-button {
     right: 25px;
   }
+
+  .current-rating {
+    height: 250px;
+    width: 250px;
+  }
 }
 
 @media only screen and (max-width: 520px) {

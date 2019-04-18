@@ -65180,3 +65180,10 @@ Processing by ExperiencesController#index as HTML
 Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/" for ::1 at 2019-04-18 09:19:09 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /usr/local/lib/ruby/gems/2.6.0/gems/railties-5.2.3/lib/rails/templates/rails/welcome/index.html.erb (4.5ms)
+Completed 200 OK in 7ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
