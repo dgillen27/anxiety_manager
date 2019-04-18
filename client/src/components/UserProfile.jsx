@@ -5,6 +5,7 @@ import Line from './Line';
 import PieGraph from './PieGraph'
 import Graphs from './Graphs';
 import PopUp from './PopUp';
+import GetStarted from './GetStarted'
 import Chart from 'chart.js';
 
 const UserProfile = (props) => {
@@ -16,8 +17,8 @@ const UserProfile = (props) => {
   }
   return(
     <div className="user-profile-container">
-      <div className="inner-user-profile-container">
-        <div className="user-profile">
+      <div className={experiences.length? "inner-user-profile-container" : "other-user-profile-container"}>
+        <div className="user-profile" style={!experiences.length === 0? {} : {alignself: "center"}}>
           {/*popup && <PopUp {...props}/>*/}
           <img src={currentUser.profile_img} alt="goat" />
             <div className="greet-user">
@@ -33,13 +34,14 @@ const UserProfile = (props) => {
             <div id="profile-center">
               <Link to="/graphs"><div className="header-button" id="profile-button">Check your trends</div></Link>
             </div>
-            { currentUser && <Link to="select-experience-type"><div className="header-button" id="profile-button">Talk About It!</div></Link>}
+            { currentUser && <Link to="/select-experience-type"><div className="header-button" id="profile-button">Talk About It!</div></Link>}
         </div>
-        {experiences.length? <Line {...props}/> : <div></div>}
-        {experiences.length? <PieGraph {...props}/> : <div></div>}
+        { experiences.length? <Line {...props}/> : <></>}
+        { experiences.length? <PieGraph {...props}/> : <></>}
       </div>
       <UserExperienceList
       {...props}/>
+      { experiences.length === 0 && <GetStarted />}
     </div>
   )
 }
