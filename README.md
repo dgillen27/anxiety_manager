@@ -31,7 +31,7 @@ My biggest goal with this project was to make a front-end feature filled project
 
 ## Code Snippet
 
-``const { experiences, currentUser, popup, morning_messages, afternoon_messages, night_messages } = props
+```const { experiences, currentUser, popup, morning_messages, afternoon_messages, night_messages } = props
 const now = new Date().getHours();
 const random = (arr) => {
   const num = (Math.floor(Math.random() * Math.floor(arr.length)))
@@ -47,7 +47,7 @@ const random = (arr) => {
   { now >= 21 && <p>{night_messages[random(night_messages)]}</p>}
   {experiences.length === 0 && <div>To get started, talk about your problems here &#x2193;</div>}
   {experiences.length === 1 && <div>Great! You've created your first post, come back anytime!</div>}
-</div>``
+</div>```
 
 ## ERD
 
