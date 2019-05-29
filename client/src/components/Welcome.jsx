@@ -15,6 +15,12 @@ const Welcome = (props) => {
         <div className="inner-welcome-button">Sign In</div></div>
       </Link> }
       <Link to="/register"><div className="welcome-button">Register Now!</div></Link>
+      {!currentUser &&
+        <div>
+          <p>Don't want to register? Use my guest account!</p>
+          <p>Email: anxietyguest@gmail.com</p>
+          <p>Password: guest</p>
+        </div>}
     </div>
   )
 }

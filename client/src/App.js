@@ -30,7 +30,9 @@ import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import ReactChartkick, { LineChart, PieChart } from 'react-chartkick'
-import Chart from 'chart.js'
+import Chart from 'chart.js';
+import About from './components/About';
+import Contact from './components/Contact'
 
 
 ReactChartkick.addAdapter(Chart)
@@ -53,7 +55,8 @@ class App extends Component {
         username: '',
         email: '',
         profile_img: '',
-        password: ''
+        password: '',
+        confirmPass: ''
       },
       experienceFormData: {
         exp_type: '',
@@ -108,21 +111,26 @@ class App extends Component {
   async handleRegister(e) {
     e.preventDefault();
     const { formData } = this.state;
-    const user = await registerUser(formData);
-    const token = await loginUser(formData);
-    console.log(user);
-    this.setState({
-      currentUser: user,
-      formData: {
-        username: '',
-        email: '',
-        profile_img: '',
-        password: '',
-      }
-    });
-    localStorage.setItem("authToken", token.jwt)
-    this.props.history.push('/user-profile');
-    await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
+    const { password, confirmPass } = formData;
+    if (password === confirmPass) {
+      const user = await registerUser(formData);
+      const token = await loginUser(formData);
+      console.log(user);
+      this.setState({
+        currentUser: user,
+        formData: {
+          username: '',
+          email: '',
+          profile_img: '',
+          password: '',
+        }
+      });
+      localStorage.setItem("authToken", token.jwt)
+      this.props.history.push('/user-profile');
+      await this.getExperiences(this.state.currentUser.sub || this.state.currentUser.id);
+    } else {
+      alert("Passwords must match")
+    }
   }
 
   handleLoginChange(e) {
@@ -348,6 +356,15 @@ class App extends Component {
           {...props}/>
 
         )} />
+
+        <Route exact path="/about" render={(props) => (
+          <About />
+        )} />
+
+        <Route exact path="/contact" render={(props) => (
+          <Contact />
+        )} />
+
         {!currentUser && loading && <LoadingAnimation/>}
         {burger && <OpenMenu/>}
         { !this.state.currentUser && !localStorage.getItem("authToken") &&

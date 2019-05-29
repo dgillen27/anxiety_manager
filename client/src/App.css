@@ -122,14 +122,18 @@ body {
 .header-button {
   transition: background-color, padding, font-size, 400ms;
   font-size: 18px;
+  padding: 10px;
+  font-size: 19px;
+  font-weight: 300;
 }
 
 .header-button:hover {
   cursor: pointer;
   background-color: var(--hover-blue);
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 50px;
-  font-size: 21px;
+  /* font-size: 21px; */
+  font-weight: bold;
 }
 
 #profile-button {
@@ -381,7 +385,7 @@ button:focus {
 }
 
 .image-select-container {
-  min-width: 300px;
+  /* min-width: 320px; */
   width: 100%;
 }
 
@@ -595,9 +599,9 @@ a {
 
   .burger {
     display: block;
-    height: 4px;
+    height: 3px;
     background: white;
-    width: 45px;
+    width: 39px;
     margin: 2px;
     border-radius: 2px;
   }
@@ -676,6 +680,11 @@ a {
 
   .user-experience {
     margin: 10px 15px 10px 10px;
+  }
+
+  .login-image {
+    width: 75px;
+    height: 75px;
   }
 }
 
